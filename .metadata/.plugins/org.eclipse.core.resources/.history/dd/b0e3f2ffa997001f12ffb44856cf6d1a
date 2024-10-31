@@ -1,0 +1,35 @@
+package conectividade;
+
+import java.sql.Connection;
+import sistema.BancoDeDados;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Main {
+	public static void main(String[] args) throws SQLException{
+		
+		Connection conexao = (new BancoDeDados()).conec();
+		
+		Statement instrucaoSQL;
+		
+		ResultSet resultados;
+		
+		instrucaoSQL = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		resultados = instrucaoSQL.executeQuery("SELECT * FROM acompanhantes");
+		System.out.println("deu certo");
+			
+			
+		/*try{
+			Class.forName(driver);
+			con = DriverManager.getConnection(servidor, usuario, senha);
+			conexao = DriverManager.getConnection(servidor, usuario, senha);
+			
+			
+		} catch(SQLException erro){
+			System.out.println(erro.getMessage());
+		}	*/	
+	}
+}
+
